@@ -44,6 +44,10 @@ class KeywordsController < ApplicationController
 
     respond_to do |format|
       if @keyword.save
+        
+        #recovery twittes
+        @keyword.recover_all_twittes
+        
         format.html { redirect_to @keyword, notice: 'Keyword was successfully created.' }
         format.json { render json: @keyword, status: :created, location: @keyword }
       else
