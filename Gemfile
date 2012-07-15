@@ -1,5 +1,15 @@
 source 'https://rubygems.org'
 
+#for twitter api requests
+gem 'twitter'
+#for deployment
+gem 'capistrano'
+#for crontab jobs
+gem 'whenever'
+#for background jobs
+gem 'delayed_job_active_record'
+gem 'daemons'
+
 gem 'rails', '3.2.6'
 
 # Bundle edge Rails instead:
