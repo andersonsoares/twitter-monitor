@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id_str: MyString
+  from_user: MyString
+  from_user_id_str: MyString
+  profile_image_url: MyString
+  text: MyString
+  date: 2012-07-15 14:40:39
+  keyword_id: 1
+
+two:
+  id_str: MyString
+  from_user: MyString
+  from_user_id_str: MyString
+  profile_image_url: MyString
+  text: MyString
+  date: 2012-07-15 14:40:39
+  keyword_id: 1

@@ -1,0 +1,45 @@
+<%= form_for(@twitte) do |f| %>
+  <% if @twitte.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@twitte.errors.count, "error") %> prohibited this twitte from being saved:</h2>
+
+      <ul>
+      <% @twitte.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id_str %><br />
+    <%= f.text_field :id_str %>
+  </div>
+  <div class="field">
+    <%= f.label :from_user %><br />
+    <%= f.text_field :from_user %>
+  </div>
+  <div class="field">
+    <%= f.label :from_user_id_str %><br />
+    <%= f.text_field :from_user_id_str %>
+  </div>
+  <div class="field">
+    <%= f.label :profile_image_url %><br />
+    <%= f.text_field :profile_image_url %>
+  </div>
+  <div class="field">
+    <%= f.label :text %><br />
+    <%= f.text_field :text %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.datetime_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :keyword_id %><br />
+    <%= f.number_field :keyword_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

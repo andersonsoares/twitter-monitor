@@ -1,0 +1,35 @@
+<h1>Listing twittes</h1>
+
+<table>
+  <tr>
+    <th>Id str</th>
+    <th>From user</th>
+    <th>From user id str</th>
+    <th>Profile image url</th>
+    <th>Text</th>
+    <th>Date</th>
+    <th>Keyword</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @twittes.each do |twitte| %>
+  <tr>
+    <td><%= twitte.id_str %></td>
+    <td><%= twitte.from_user %></td>
+    <td><%= twitte.from_user_id_str %></td>
+    <td><%= twitte.profile_image_url %></td>
+    <td><%= twitte.text %></td>
+    <td><%= twitte.date %></td>
+    <td><%= twitte.keyword_id %></td>
+    <td><%= link_to 'Show', twitte %></td>
+    <td><%= link_to 'Edit', edit_twitte_path(twitte) %></td>
+    <td><%= link_to 'Destroy', twitte, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Twitte', new_twitte_path %>

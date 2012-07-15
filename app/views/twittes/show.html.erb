@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id str:</b>
+  <%= @twitte.id_str %>
+</p>
+
+<p>
+  <b>From user:</b>
+  <%= @twitte.from_user %>
+</p>
+
+<p>
+  <b>From user id str:</b>
+  <%= @twitte.from_user_id_str %>
+</p>
+
+<p>
+  <b>Profile image url:</b>
+  <%= @twitte.profile_image_url %>
+</p>
+
+<p>
+  <b>Text:</b>
+  <%= @twitte.text %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @twitte.date %>
+</p>
+
+<p>
+  <b>Keyword:</b>
+  <%= @twitte.keyword_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_twitte_path(@twitte) %> |
+<%= link_to 'Back', twittes_path %>
