@@ -5,14 +5,12 @@
     <th>Name</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @keywords.each do |keyword| %>
   <tr>
     <td><%= keyword.name %></td>
-    <td><%= link_to 'Show', keyword %></td>
-    <td><%= link_to 'Edit', edit_keyword_path(keyword) %></td>
+	<td><%= link_to "View Twittes", keyword_twittes_path(keyword) %></td>
     <td><%= link_to 'Destroy', keyword, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
