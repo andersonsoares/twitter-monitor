@@ -1,6 +1,6 @@
 TwitterMonitor::Application.routes.draw do
 
-  root :to => 'keyword#index'
+  root :to => 'keywords#index'
 
   resources :keywords do
     resources :twittes
