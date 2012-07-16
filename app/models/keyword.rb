@@ -5,7 +5,7 @@ class Keyword < ActiveRecord::Base
   
   #validations
   validates_presence_of :name, :on => :create, :message => "can't be blank"
-  validates_uniqueness_of :name, :on => :create, :case_sensitive => true, :message => "must be unique"
+  validates_uniqueness_of :name, :on => :create, :case_sensitive => false, :message => "must be unique"
   
   
   #method to recover all twittes from Twitter database, and put then in our database
