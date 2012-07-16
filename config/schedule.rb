@@ -21,10 +21,10 @@
 
 set :output, "/tmp/cron_whenever.log"
 every 10.minutes do
-  runner "Keyword.update_twittes"
+  command "cd /home/deploy/aers/twitter-monitor.andersonsoares.info/current && /usr/local/bin/bundle exec ./script/rails runner -e production 'Keyword.update_twittes'"
 end
 
 #create cron to start delayed_job every reboot
 every :reboot do
-  command "cd #{path} && RAILS_ENV=production /usr/local/bin/bundle exec ./script/delayed_job -n 2 start"
+  command "cd /home/deploy/aers/twitter-monitor.andersonsoares.info/current && RAILS_ENV=production /usr/local/bin/bundle exec ./script/delayed_job -n 2 start"
 end
