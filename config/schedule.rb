@@ -25,3 +25,6 @@ every 10.minutes do
 end
 
 #create cron to start delayed_job every reboot
+every :reboot do
+  command "cd #{path} && RAILS_ENV=production /usr/local/bin/bundle exec ./script/delayed_job -n 2 start"
+end
