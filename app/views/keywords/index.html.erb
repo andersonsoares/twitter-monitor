@@ -1,5 +1,6 @@
+<div id="topo">
 <h1>Listing keywords</h1>
-
+</div>
 <table>
   <tr>
     <th>Name</th>
@@ -10,7 +11,7 @@
 <% @keywords.each do |keyword| %>
   <tr>
     <td><%= keyword.name %></td>
-	<td><%= link_to "View Twittes", keyword_twittes_path(keyword) %></td>
+	<td><%= link_to "View Twittes", keyword_twittes_path(keyword) %> (Total: <%=keyword.twittes.length%>)</td>
     <!--<td><%= link_to 'Destroy', keyword, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
   </tr>
 <% end %>
