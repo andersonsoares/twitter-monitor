@@ -15,7 +15,7 @@ set :scm, :git
 
 server application, :app, :web, :db, :primary=>true
 
-
+set :normalize_asset_timestamps, false
 
 after "deploy:update_code","deploy:config_symlink"
 

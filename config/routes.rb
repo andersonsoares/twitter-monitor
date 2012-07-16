@@ -1,7 +1,10 @@
 TwitterMonitor::Application.routes.draw do
-  resources :twittes
 
-  resources :keywords
+  root :to => 'keyword#index'
+
+  resources :keywords do
+    resources :twittes
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
