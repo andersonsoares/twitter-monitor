@@ -5,7 +5,7 @@ class TwittesController < ApplicationController
     
     @keyword = Keyword.find(params[:keyword_id])
     
-    @twittes = Twitte.where(:keyword_id=>@keyword.id).order("date desc")
+    @twittes = Twitte.where(:keyword_id=>@keyword.id).order("date desc").page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

@@ -10,6 +10,8 @@ gem 'whenever'
 gem 'delayed_job_active_record'
 gem 'daemons'
 
+gem 'will_paginate'
+
 #postgres gem
 gem 'pg'
 
