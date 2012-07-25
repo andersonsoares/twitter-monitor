@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20120715174039) do
     t.string   "id_str",            :limit => 36, :null => false
     t.string   "from_user"
     t.string   "from_user_id_str"
-    t.string   "profile_image_url"
+    t.text     "profile_image_url"
     t.string   "text"
     t.datetime "date"
     t.integer  "keyword_id",                      :null => false
