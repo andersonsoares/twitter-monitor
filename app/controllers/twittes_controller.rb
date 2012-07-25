@@ -13,15 +13,15 @@ class TwittesController < ApplicationController
     end
   end
 
-  # DELETE /twittes/1
-  # DELETE /twittes/1.json
-  def destroy
-    @twitte = Twitte.find(params[:id])
-    @twitte.destroy
-
-    respond_to do |format|
-      format.html { redirect_to twittes_url }
-      format.json { head :no_content }
-    end
-  end
+  # # DELETE /twittes/1
+  #   # DELETE /twittes/1.json
+  #   def destroy
+  #     @twitte = Twitte.find(params[:id])
+  #     @twitte.destroy
+  # 
+  #     respond_to do |format|
+  #       format.html { redirect_to twittes_url }
+  #       format.json { head :no_content }
+  #     end
+  #   end
 end

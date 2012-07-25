@@ -6,7 +6,11 @@ class Keyword < ActiveRecord::Base
   #validations
   validates_presence_of :name, :on => :create, :message => "can't be blank"
   validates_uniqueness_of :name, :on => :create, :case_sensitive => false, :message => "must be unique"
-  
+
+  validates :name,
+#                  :format => { :with => /^[\w\d]+$/ },
+                  :format => { :with => /(^|\s)#([^ ]*)/, :message => "is not a hastag" },
+                  :length => { :minimum => 1, :message => "size to small"}
   
   #method to recover all twittes from Twitter database, and put then in our database
   def recover_all_twittes
