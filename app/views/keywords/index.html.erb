@@ -21,7 +21,7 @@
 	<td><%= link_to "View Twittes", keyword_twittes_path(keyword) %> (Total: <%=keyword.twittes.length%>)</td>
 	<td>
 		 <% if current_user != nil %>
-			<% if current_user.id == keyword.id %>
+			<% if current_user.id == keyword.user.id %>
 				(<%= link_to 'Remover', keyword, method: :delete, data: { confirm: 'Are you sure?' } %>)
 			<% elsif current_user.has_role? :admin %>
 				(<%= link_to 'Remover', keyword, method: :delete, data: { confirm: 'Are you sure?' } %>)
