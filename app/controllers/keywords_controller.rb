@@ -1,4 +1,7 @@
 class KeywordsController < ApplicationController
+  before_filter :authenticate_user!, except: [:index]
+  load_and_authorize_resource except: [:index]
+  
   # GET /keywords
   # GET /keywords.json
   def index
@@ -25,7 +28,6 @@ class KeywordsController < ApplicationController
   # GET /keywords/new.json
   def new
     @keyword = Keyword.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @keyword }
@@ -38,6 +40,7 @@ class KeywordsController < ApplicationController
   # POST /keywords.json
   def create
     @keyword = Keyword.new(params[:keyword])
+    @keyword.user = current_user
 
     respond_to do |format|
       if @keyword.save
@@ -76,15 +79,15 @@ class KeywordsController < ApplicationController
   #     end
   #   end
   # 
-  #   # DELETE /keywords/1
-  #   # DELETE /keywords/1.json
-  #   def destroy
-  #     @keyword = Keyword.find(params[:id])
-  #     @keyword.destroy
-  # 
-  #     respond_to do |format|
-  #       format.html { redirect_to keywords_url }
-  #       format.json { head :no_content }
-  #     end
-  #   end
+    # DELETE /keywords/1
+    # DELETE /keywords/1.json
+    def destroy
+      @keyword = Keyword.find(params[:id])
+      @keyword.destroy
+  
+      respond_to do |format|
+        format.html { redirect_to keywords_url }
+        format.json { head :no_content }
+      end
+    end
 end

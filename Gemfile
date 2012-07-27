@@ -10,6 +10,12 @@ gem 'whenever'
 gem 'delayed_job_active_record'
 gem 'daemons'
 
+#Gem para autenticacao
+gem 'devise'
+#Gems para autorizacao
+gem 'cancan'
+gem 'rolify'
+
 gem 'will_paginate'
 
 #postgres gem

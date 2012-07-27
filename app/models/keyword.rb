@@ -1,5 +1,10 @@
 class Keyword < ActiveRecord::Base
+  
+  resourcify
+  
   attr_accessible :name
+  
+  belongs_to :user
   
   has_many :twittes, :dependent => :delete_all
   

@@ -1,22 +1,39 @@
 <div id="topo">
+
 <h1>Listing keywords</h1>
 </div>
 <table>
   <tr>
     <th>Name</th>
+    <th>Created by</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @keywords.each do |keyword| %>
   <tr>
-    <td><%= keyword.name %></td>
+	<td>
+		<%= keyword.name %>
+	</td>
+	<td>
+		<%= keyword.user.email %>
+	</td>
 	<td><%= link_to "View Twittes", keyword_twittes_path(keyword) %> (Total: <%=keyword.twittes.length%>)</td>
-    <!--<td><%= link_to 'Destroy', keyword, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+	<td>
+		 <% if current_user != nil %>
+			<% if current_user.id == keyword.id %>
+				(<%= link_to 'Remover', keyword, method: :delete, data: { confirm: 'Are you sure?' } %>)
+			<% elsif current_user.has_role? :admin %>
+				(<%= link_to 'Remover', keyword, method: :delete, data: { confirm: 'Are you sure?' } %>)
+			<% end %>
+		<% end %>
+	</td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Keyword', new_keyword_path %>
+<% if current_user != nil %>
+	<%= link_to 'New Keyword', new_keyword_path %>
+<% end %>
