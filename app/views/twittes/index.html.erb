@@ -1,25 +1,33 @@
-<div id="topo">
-<h1>Listing twittes of <%=@keyword.name%></h1>
+<%- model_class = Twitte -%>
+<div class="page-header">
+  <h1><%=@keyword.name%> <%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<%= will_paginate @twittes, previous_label: h("<"), next_label: h(">") %>
+
 </div>
 
-<%= will_paginate @twittes %>
-
-<table>
-  <tr>
-	<th>Date</th>
-    <th>From user</th>
-    <th>Text</th>
-  </tr>
-
-<% @twittes.each do |twitte| %>
-  <tr>
-    <td><%= twitte.date %></td>
-    <td><%= twitte.from_user %></td>
-    <td><%= twitte.text %></td>
-
-  </tr>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:from_user) %></th>
+      <th><%= model_class.human_attribute_name(:text) %></th>
+      <th><%= model_class.human_attribute_name(:date) %></th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <% @twittes.each do |twitte| %>
+      <tr>
+        <td><%= link_to twitte.id, keyword_twitte_path(@keyword.id, twitte) %></td>
+        <td><%= twitte.from_user %></td>
+        <td><%= twitte.text %></td>
+        <td><%= twitte.date %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-<%= link_to "Back to Keyword list", keywords_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_keyword_twitte_path(@keyword.id),
+            :class => 'btn btn-primary' %>

@@ -1,40 +1,33 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Twitte -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Id str:</b>
-  <%= @twitte.id_str %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:id_str) %>:</strong></dt>
+  <dd><%= @twitte.id_str %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:from_user) %>:</strong></dt>
+  <dd><%= @twitte.from_user %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:from_user_id_str) %>:</strong></dt>
+  <dd><%= @twitte.from_user_id_str %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:profile_image_url) %>:</strong></dt>
+  <dd><%= @twitte.profile_image_url %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:text) %>:</strong></dt>
+  <dd><%= @twitte.text %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
+  <dd><%= @twitte.date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:keyword_id) %>:</strong></dt>
+  <dd><%= @twitte.keyword_id %></dd>
+</dl>
 
-<p>
-  <b>From user:</b>
-  <%= @twitte.from_user %>
-</p>
-
-<p>
-  <b>From user id str:</b>
-  <%= @twitte.from_user_id_str %>
-</p>
-
-<p>
-  <b>Profile image url:</b>
-  <%= @twitte.profile_image_url %>
-</p>
-
-<p>
-  <b>Text:</b>
-  <%= @twitte.text %>
-</p>
-
-<p>
-  <b>Date:</b>
-  <%= @twitte.date %>
-</p>
-
-<p>
-  <b>Keyword:</b>
-  <%= @twitte.keyword_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_twitte_path(@twitte) %> |
-<%= link_to 'Back', twittes_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              keyword_twittes_path(@keyword.id), :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_keyword_twitte_path(@keyword.id,@twitte), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              keyword_twitte_path(@keyword.id, @twitte),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>

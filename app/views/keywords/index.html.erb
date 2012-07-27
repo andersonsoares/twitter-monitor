@@ -1,39 +1,39 @@
-<div id="topo">
-
-<h1>Listing keywords</h1>
+<%- model_class = Keyword -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Created by</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @keywords.each do |keyword| %>
-  <tr>
-	<td>
-		<%= keyword.name %>
-	</td>
-	<td>
-		<%= keyword.user.user_name %>
-	</td>
-	<td><%= link_to "View Twittes", keyword_twittes_path(keyword) %> (Total: <%=keyword.twittes.length%>)</td>
-	<td>
-		 <% if current_user != nil %>
-			<% if current_user.id == keyword.user.id %>
-				(<%= link_to 'Remover', keyword, method: :delete, data: { confirm: 'Are you sure?' } %>)
-			<% elsif current_user.has_role? :admin %>
-				(<%= link_to 'Remover', keyword, method: :delete, data: { confirm: 'Are you sure?' } %>)
-			<% end %>
-		<% end %>
-	</td>
-  </tr>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th>Monitoring since</th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @keywords.each do |keyword| %>
+      <tr>
+        <td><%= link_to keyword.id, keyword_path(keyword) %></td>
+        <td><%= keyword.name %></td>
+        <td><%= keyword.user.user_name%></td>
+        <td><%=l keyword.created_at %></td>
+        <td>
+		  <%= link_to "View Twittes", keyword_twittes_path(keyword.id), :class => 'btn btn-mini btn-info' %>
+		  <% if (current_user != nil && current_user.has_role?(:admin)) || (current_user != nil && current_user.id == keyword.user.id) %>		
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      keyword_path(keyword),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' %>
+		  <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<% if current_user != nil %>
-	<%= link_to 'New Keyword', new_keyword_path %>
-<% end %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_keyword_path,
+            :class => 'btn btn-primary' %>
