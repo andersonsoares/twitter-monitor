@@ -24,7 +24,7 @@
   <tbody>
     <% @twittes.each do |twitte| %>
       <tr>
-        <td><%= link_to twitte.id, keyword_twitte_path(@keyword.id, twitte) %></td>
+        <td><a href="#"><%= twitte.id %></a></td>
         <td><%= twitte.from_user %></td>
         <td><%= twitte.text %></td>
         <td><%= twitte.date %></td>

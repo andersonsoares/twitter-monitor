@@ -2,6 +2,7 @@ class UpdateTwittesWorker
   include Sidekiq::Worker
   
   def perform(keyword_id, name)
+    puts 'Updating twittes from #{name}'
     #recover the last twitte(by recent date), and get its id_str(twitter id)
     most_recent_id = Twitte.order("date desc").where(:keyword_id => keyword_id).first.id_str
 
@@ -13,6 +14,8 @@ class UpdateTwittesWorker
       if(loop == 16)
         break
       end
+      
+      puts '#{name} - #{query.length} new twittes'
       
       query.map do |t|
          Twitte.create(
@@ -27,6 +30,7 @@ class UpdateTwittesWorker
        end
        loop += 1
     end
+    puts 'Finish Updating twittes from #{name}'
   end
   
 end

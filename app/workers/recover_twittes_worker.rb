@@ -2,6 +2,8 @@ class RecoverTwittesWorker
   include Sidekiq::Worker
   
   def perform(keyword_id,name)
+    
+    puts 'Recovering twittes from #{name}'
     #loop for pages
     loop = 1
     while( (query = Twitter.search(name+" -rt", :rpp=>100, :page=>loop).results).length != 0 )
@@ -26,7 +28,7 @@ class RecoverTwittesWorker
 
       loop += 1
     end
-    
+    puts 'Finish Recovering twittes from #{name}'    
   end
   
 end

@@ -7,7 +7,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:name) %> (# twittes)</th>
       <th><%= model_class.human_attribute_name(:user_id) %></th>
       <th>Monitoring since</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -17,7 +17,7 @@
     <% @keywords.each do |keyword| %>
       <tr>
         <td><%= link_to keyword.id, keyword_path(keyword) %></td>
-        <td><%= keyword.name %></td>
+        <td><%= keyword.name %> (<%=keyword.twittes.count%>)</td>
         <td><%= keyword.user.user_name%></td>
         <td><%=l keyword.created_at %></td>
         <td>
