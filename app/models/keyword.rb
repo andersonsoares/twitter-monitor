@@ -98,7 +98,8 @@ class Keyword < ActiveRecord::Base
     keywords = Keyword.all
     
     keywords.each do |k|
-      k.update_twittes
+      UpdateTwittesWorker.perform_async(k.id, k.name)
+      #k.update_twittes
     end
   end
   

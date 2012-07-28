@@ -1,3 +1,5 @@
+require 'sidekiq/capistrano'
+
 set :application, "twitter-monitor.andersonsoares.info"
 set :repository,  "git://github.com/andersonsoares/twitter-monitor.git"
 

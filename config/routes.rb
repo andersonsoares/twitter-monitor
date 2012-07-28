@@ -1,12 +1,16 @@
+require 'sidekiq/web'
+
 TwitterMonitor::Application.routes.draw do
 
   devise_for :users
-
+  
   root :to => 'keywords#index'
 
   resources :keywords do
     resources :twittes
   end
+  
+  mount Sidekiq::Web, at: '/sidekiq'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

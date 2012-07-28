@@ -46,7 +46,8 @@ class KeywordsController < ApplicationController
       if @keyword.save
         
         #recovery twittes
-        @keyword.recover_all_twittes
+        #@keyword.recover_all_twittes
+        RecoverTwittesWorker.perform_async(@keyword.id,@keyword.name)
         
         format.html { redirect_to keywords_url, notice: 'Keyword was successfully created.' }
         format.json { render json: @keyword, status: :created, location: @keyword }

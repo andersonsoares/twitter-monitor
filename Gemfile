@@ -18,6 +18,10 @@ gem 'rolify'
 
 gem 'will_paginate'
 
+gem 'sidekiq'
+gem 'sinatra'
+gem 'slim'
+
 #postgres gem
 gem 'pg'
 
