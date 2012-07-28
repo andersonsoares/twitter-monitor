@@ -48,7 +48,7 @@ class KeywordsController < ApplicationController
         #recovery twittes
         @keyword.recover_all_twittes
         
-        format.html { redirect_to @keyword, notice: 'Keyword was successfully created.' }
+        format.html { redirect_to keywords_url, notice: 'Keyword was successfully created.' }
         format.json { render json: @keyword, status: :created, location: @keyword }
       else
         format.html { render action: "new" }
@@ -86,7 +86,7 @@ class KeywordsController < ApplicationController
       @keyword.destroy
   
       respond_to do |format|
-        format.html { redirect_to keywords_url }
+        format.html { redirect_to keywords_url, notice: 'Keyword was successfully removed.' }
         format.json { head :no_content }
       end
     end

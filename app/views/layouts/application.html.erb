@@ -12,20 +12,12 @@
       <div class="navbar-inner">
         <div class="container">
 	
-		  <!--flash-messages -->
-		<% flash.each do |name, msg| %>
-		  <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-		    <a class="close" data-dismiss="alert">x</a>
-		    <%= msg %>
-		  </div>
-		<% end %>
-	
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Twitter-Monitor</a>
+          <a class="brand" href="http://twitter-monitor.andersonsoares.info">Twitter-Monitor</a>
     	 <div class="btn-group pull-right">
 		    <% if user_signed_in? %>
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
@@ -33,7 +25,7 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="#">Profile</a></li>
+              <li><%= link_to "Profile", edit_user_registration_path %></li>
               <li class="divider"></li>
               <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
             </ul>
@@ -43,7 +35,7 @@
 		  </div>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Keywords</a></li>
+              <li class="active"><%= link_to 'Keywords', keywords_path %></li>
               <li><a href="#about">About</a></li>
             </ul>
           </div><!--/.nav-collapse -->
@@ -52,6 +44,14 @@
     </div>
 	
 	<div class="container">
+		
+	  <!--flash-messages -->
+		<% flash.each do |name, msg| %>
+		  <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+		    <a class="close" data-dismiss="alert">x</a>
+		    <%= msg %>
+		  </div>
+		<% end %>
 	
 		<div class="hero-unit">
 			<!-- main -->
