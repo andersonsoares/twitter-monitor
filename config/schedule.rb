@@ -26,7 +26,7 @@ end
 
 #create cron to start sidekiq every reboot
 every :reboot do
-  command "cd /home/deploy/aers/twitter-monitor.andersonsoares.info/current && RAILS_ENV=production /usr/local/bin/bundle exec sidekiq -C /home/deploy/aers/twitter-monitor.andersonsoares.info/current/config/sidekiq.yml -P /home/deploy/aers/twitter-monitor.andersonsoares.info/current/tmp/pids/sidekiq.pid >> log/sidekiq.log 2>&1"
+  command "cd /home/deploy/aers/twitter-monitor.andersonsoares.info/current ; nohup /usr/local/bin/bundle exec sidekiq -e production -C /home/deploy/aers/twitter-monitor.andersonsoares.info/current/config/sidekiq.yml -P /home/deploy/aers/twitter-monitor.andersonsoares.info/current/tmp/pids/sidekiq.pid >> log/sidekiq.log 2>&1"
 end
 
 #create cron to start delayed_job every reboot
