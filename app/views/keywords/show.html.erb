@@ -7,7 +7,7 @@
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @keyword.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @keyword.user_id %></dd>
+  <dd><%= @keyword.user_id.user_name %></dd>
 </dl>
 
 <div class="form-actions">
