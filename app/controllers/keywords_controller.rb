@@ -5,7 +5,7 @@ class KeywordsController < ApplicationController
   # GET /keywords
   # GET /keywords.json
   def index
-    @keywords = Keyword.order("name desc").all
+    @keywords = Keyword.order("name asc").all
 
     respond_to do |format|
       format.html # index.html.erb
