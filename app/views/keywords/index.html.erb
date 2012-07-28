@@ -17,7 +17,7 @@
     <% @keywords.each do |keyword| %>
       <tr>
         <td><%= keyword.id %></td>
-        <td><%= link_to keyword.name, keyword.path(keyword) %> (<%=keyword.twittes.count%>)</td>
+        <td><%= link_to keyword.name, keyword_path(keyword) %> (<%=keyword.twittes.count%>)</td>
         <td><%= keyword.user.user_name%></td>
         <td><%=l keyword.created_at %></td>
         <td>
