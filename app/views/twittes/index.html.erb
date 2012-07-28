@@ -1,7 +1,13 @@
 <%- model_class = Twitte -%>
 <div class="page-header">
   <h1><%=@keyword.name%> <%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
-<%= will_paginate @twittes, previous_label: h("<"), next_label: h(">") %>
+
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @twittes %>
+    </div>
+    <%= will_paginate @twittes, :container => false %>
+  </div>
 
 </div>
 
@@ -27,7 +33,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_keyword_twitte_path(@keyword.id),
-            :class => 'btn btn-primary' %>
