@@ -1,5 +1,6 @@
 class UpdateTwittesWorker
   include Sidekiq::Worker
+  sidekiq_options :retry => false
   
   def perform(keyword_id, name)
     puts "Updating twittes from #{name}\n"
