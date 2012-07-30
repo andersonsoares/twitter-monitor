@@ -17,12 +17,13 @@
     <% @keywords.each do |keyword| %>
       <tr>
         <td><%= keyword.id %></td>
-        <td><%= link_to keyword.name, keyword_path(keyword) %> (<%=keyword.twittes.count%>)</td>
+        <td><%= link_to keyword.name, keyword_twittes_path(keyword) %> (<%=keyword.twittes.count%>)</td>
         <td><%= keyword.user.user_name%></td>
         <td><%=l keyword.created_at %></td>
         <td>
 		  <%= link_to "View Twittes", keyword_twittes_path(keyword.id), :class => 'btn btn-mini btn-info' %>
 		  <% if (current_user != nil && current_user.has_role?(:admin)) || (current_user != nil && current_user.id == keyword.user.id) %>		
+		  <%= link_to "Edit", keyword_path(keyword.id), :class => 'btn btn-mini btn-action' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       keyword_path(keyword),
                       :method => :delete,
